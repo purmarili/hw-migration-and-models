@@ -23,3 +23,12 @@ Route::get('/quizzes', [CRUDController::class, 'index'])->name('quizzes.index');
 Route::get('/quizzes/create', [CRUDController::class, 'create'])->name('quizzes.create');
 Route::post('/quizzes/store', [CRUDController::class, 'store'])->name('quizzes.store');
 Route::get('/quizzes/{quiz}/edit', [CRUDController::class, 'edit'])->name('quizzes.edit');
+Route::group(['domain' => 'admin.yourapp.com'], function () {
+    Route::resource('posts', PostController::class);
+    Route::get('posts/{post}/comments', [PostController::class, 'showComments']);
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
+});
+
+Route::get('/', [PostController::class, 'index']);
+Route::get('posts/{post}', [PostController::class, 'show']);
+Route::post('posts/{post}/comments', [CommentController::class, 'store']);
