@@ -23,3 +23,5 @@ Route::get('/quizzes', [CRUDController::class, 'index'])->name('quizzes.index');
 Route::get('/quizzes/create', [CRUDController::class, 'create'])->name('quizzes.create');
 Route::post('/quizzes/store', [CRUDController::class, 'store'])->name('quizzes.store');
 Route::get('/quizzes/{quiz}/edit', [CRUDController::class, 'edit'])->name('quizzes.edit');
+Route::get('/some-route', function () {return view('welcome');})->middleware('check-name');
+Route::get('/error', function () {return 'Error page';});
