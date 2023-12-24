@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CRUDController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,9 @@ use App\Http\Controllers\CRUDController;
 |
 */
 
-Route::get('/', function () {
-    $quizzes = Quiz::all();
-    return view('welcome', ['quizzes' => $quizzes]);
-});
+
+
+Route::get('/', [QuizController::class, 'index']);
 
 Route::get('/quizzes', [CRUDController::class, 'index'])->name('quizzes.index');
 Route::get('/quizzes/create', [CRUDController::class, 'create'])->name('quizzes.create');

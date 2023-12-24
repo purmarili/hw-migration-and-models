@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Quiz App</title>
-</head>
-<body>
-    @foreach($quizzes as $quiz)
-        <h2>{{ $quiz->name }}</h2>
-        <p>{{ $quiz->description }}</p>
-    @endforeach
-</body>
-</html>
+
+
+@foreach ($quizzes as $quiz)
+    <div>
+        <h3>{{ $quiz->title }}</h3>
+        @if($quiz->photo)
+            <img src="{{ $quiz->photo }}" alt="Quiz Photo">
+        @endif
+        @if($quiz->description)
+            <p>{{ $quiz->description }}</p>
+@endif
